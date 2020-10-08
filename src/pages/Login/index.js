@@ -9,6 +9,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import MailIcon from '@material-ui/icons/Mail';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 
+import { login } from '../../functions/integration'
+
 import LogoImg from '../../assets/images/logo-editado.png';
 
 import {
@@ -30,6 +32,15 @@ const Login = () => {
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
     };
+
+    const loginApp = () => {
+        const body = {
+            email: values.email,
+            password: values.password,
+        };
+        login(body, history);
+    };
+
 
     return(
         <ThemeProvider theme={Theme}>
@@ -63,7 +74,7 @@ const Login = () => {
                         }
                     />
                 </InputContainer>            
-                <Button click={() =>{history.push('funcionarios')}} text={'Login'}/>
+                <Button click={loginApp} text={'Login'}/>
             </ContainerLogin>
         </ThemeProvider>
     )

@@ -2,13 +2,13 @@ import React, { useState, useContext } from 'react';
 
 import Context from '../../functions/Context';
 
+import { newEmployee } from '../../functions/integration'
+
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import InputText from '../../components/InputText';
 import Button from '../../components/Button';
-
-import DropZone from '../../components/DropZone';
 
 import {
     Container,
@@ -21,7 +21,7 @@ import {
 } from './styles';
 
 const AddEmpoylee = () => {
-    const officeContext = useContext(Context);
+    const employeeContext = useContext(Context);
     const [values, setValues] = useState({
         name: '',
         surname: '',
@@ -38,12 +38,22 @@ const AddEmpoylee = () => {
         setValues({ ...values, [prop]: event.target.value });
     };
 
-    const sendForm = () =>{
-        setValues('');
+    const sendForm = () => {
+        const body = {
+            name: values.name,
+            surname: values.surname,
+            photo: 'https://picsum.photos/id/237/200/200',
+            office: values.office,
+            birthDate: values.birthDate,
+            salary: values.salary
+        };
+        newEmployee(body, employeeContext.dispatch);
+        setValues('')
+        console.log('chamou aqui!', values)
     }
 
-    const options = officeContext.offices.map((office) => {
-        return <MenuItem value={office.type}>{office.type}</MenuItem>
+    const options = employeeContext.offices.map((office) => {
+        return <MenuItem value={office.id}>{office.type}</MenuItem>
     });
 
     return(
@@ -51,7 +61,7 @@ const AddEmpoylee = () => {
             <Title>Adicionar Funcionário</Title>
             <Form>
                 <DropContainer>
-                    <DropZone />
+                    <p>Num Futuro, arrastar para enviar a foto</p>
                 </DropContainer>
                 <InputText 
                     value={values.type}

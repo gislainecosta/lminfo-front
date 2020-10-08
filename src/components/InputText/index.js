@@ -13,7 +13,7 @@ const InputText = (props) => {
             <Input
                 label={props.placeholder}
                 multiline
-                rows={props.name === 'description' ? 4 : 1}
+                rows={props.name === 'description' ? 2 : 1}
                 value={props.value}
                 onChange={props.change}
                 variant="filled"

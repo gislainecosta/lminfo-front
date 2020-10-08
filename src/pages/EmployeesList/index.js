@@ -3,8 +3,6 @@ import React, { useContext  }from 'react';
 import Context from '../../functions/Context';
 import { authorization } from "../../functions";
 
-import Header from '../../components/Header';
-
 import {
     ContainerList,
     ContainerEmployee,
@@ -19,12 +17,12 @@ import EmployeeDetails from '../../components/EmployeeDetails';
 
 const EmployeesList = () => {
     const employeeContext = useContext(Context);
-    const officeContext = useContext(Context);
 
+    console.log(employeeContext)
     return(
         <ContainerList>
             <Title>Lista de Funcionários</Title>
-            {officeContext.offices.map((office) => {
+            {employeeContext.offices.map((office) => {
                 return <ContainerEmployee>
                     <Office>
                         <CardTravelIcon style={{ color: '#ca0000', fontSize: 32 }} />
@@ -39,6 +37,7 @@ const EmployeesList = () => {
                         }).map((employee) => {
                             return <EmployeeDetails
                                 key={employee.id}
+                                id={employee.id}
                                 photo={employee.photo}
                                 name={`${employee.name} ${employee.surname}`}
                                 office={employee.office}

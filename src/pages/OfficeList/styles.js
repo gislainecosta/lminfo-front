@@ -5,7 +5,8 @@ export const ContainerList = styled.div`
     align-items: start;
     justify-items: center;
     margin-left: 18vw;
-    grid-template-columns: repeat(3, 1fr)
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 8%
 `;
 
 export const ContainerOffice = styled.article`
@@ -27,7 +28,7 @@ export const Title = styled.h1`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     grid-area: 1/1/2/4;
-    margin-bottom: -10%
+    margin-bottom: 2%;
 `;
 
 export const OfficeTitle = styled.p`

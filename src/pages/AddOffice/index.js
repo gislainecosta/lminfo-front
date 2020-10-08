@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import Context from '../../functions/Context';
+
+import { newOffice } from '../../functions/integration';
 
 import InputText from '../../components/InputText';
 import Button from '../../components/Button';
@@ -12,6 +14,7 @@ import {
 } from './styles';
 
 const AddOffice = () => {
+    const officeContext = useContext(Context);
     const [values, setValues] = useState({
         type: '',
         description: '',
@@ -26,7 +29,12 @@ const AddOffice = () => {
     };
 
     const sendForm = () =>{
-        console.log(values.type, values.description)
+        const body = {
+            type: values.type,
+            description: values.description,
+        };
+        newOffice(body, officeContext.dispatch);
+        setValues('')
     }
 
     return(

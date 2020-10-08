@@ -33,6 +33,13 @@
   background: linear-gradient(90deg, #000f1c 0%, #3800a7 16%, #4b20a1 51%, #3800a7 84%, #000f1c 100%);
 }
 
-@media screen and (max-device-width: 600px){
 
-}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active,
+input:-webkit-autofill:focus {
+    background-color: transparent !important;
+    color:#00a2ff !important;
+    -webkit-box-shadow: 0 0 0 1000px #00134d inset !important;
+    -webkit-text-fill-color:#00a2ff !important;
+    }
